@@ -13,7 +13,7 @@ CFLAGS += -Ofast
 CFLAGS += -g
 #CFLAGS += -pg
 
-LIBRARIES =
+LIBRARIES = `libpng-config --cflags --ldflags`
 
 SRC = $(shell find ./src -name '*.cpp')
 OBJ = $(subst .cpp,.o,$(SRC))
