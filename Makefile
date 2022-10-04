@@ -40,4 +40,5 @@ uninstall :
 
 clean :
 	find . -type f -name '*.o' -delete
+	rm -rf img/output.png
 	rm -rf $(BIN)/*
