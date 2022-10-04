@@ -7,6 +7,7 @@
 #pragma once
 
 #include <png++/png.hpp>
+#include "math.h"
 
 /**
  * Find the simple gradiant of the image. Only gets the gradiant based on the

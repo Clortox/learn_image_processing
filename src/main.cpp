@@ -11,10 +11,11 @@
 
 int main(int argc, char** argv){
     //png::image<png::rgb_pixel> myimage("img/input.png");
+    //png::image<png::rgb_pixel> myimage("img/tree.png");
     png::image<png::rgb_pixel> myimage("img/amogus.png");
 
-    png::image<png::gray_pixel> grayscale = simple_gradiant(myimage);
-    grayscale.write("img/output.png");
+    png::image<png::gray_pixel> gradiant = simple_gradiant(myimage);
+    gradiant.write("img/output.png");
 
     std::cout << "wrote!\n";
     return 0;
