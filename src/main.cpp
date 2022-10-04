@@ -9,14 +9,33 @@
 #include <png++/png.hpp>
 #include "gradiant_vector.hpp"
 
+void help(char** argv){
+    std::cout << "Usage: " << argv[0] << " [processing-flags] [INPUT_FILE.png]\n";
+    std::cout << "Flags:\n";
+    std::cout << " -s       Simple Gradiant\n";
+    std::cout << " -p       Prewitt Gradiant Smoothing\n";
+    std::cout << "\nNote: only one flag can be choosen at a time. Result goes to output.png\n";
+    std::cout << std::endl;
+    exit(-1);
+}
+
 int main(int argc, char** argv){
-    //png::image<png::rgb_pixel> myimage("img/input.png");
-    //png::image<png::rgb_pixel> myimage("img/tree.png");
-    png::image<png::rgb_pixel> myimage("img/amogus.png");
+    if(argc != 3)
+        help(argv);
 
-    png::image<png::gray_pixel> gradiant = simple_gradiant(myimage);
-    gradiant.write("img/output.png");
+    png::image<png::rgb_pixel> input(argv[2]);
+    png::image<png::gray_pixel> result;
+    std::string flag(argv[1]);
 
-    std::cout << "wrote!\n";
+    if(flag == "-s")
+        result = simple_gradiant(input);
+    else if (flag == "-p")
+        result = prewitt_gradiant(input);
+    else
+        help(argv);
+
+    result.write("output.png");
+    std::cout << "wrote to output.png!\n";
+
     return 0;
 }
