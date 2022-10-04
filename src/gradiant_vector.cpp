@@ -40,7 +40,7 @@ png::image<png::gray_pixel> simple_gradiant(png::image<png::rgb_pixel>& source) 
 png::image<png::gray_pixel> prewitt_gradiant(png::image<png::rgb_pixel>& source){
     png::image<png::gray_pixel> ret(source.get_width(), source.get_height());
     for(int y = 0; y < source.get_height(); ++y){
-        for(int x = 0; x < soure.get_width(); ++x){
+        for(int x = 0; x < source.get_width(); ++x){
 
         }
     }
