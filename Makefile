@@ -13,7 +13,7 @@ CFLAGS += -Ofast
 CFLAGS += -g
 #CFLAGS += -pg
 
-LIBRARIES =
+LIBRARIES = `libpng-config --cflags --ldflags`
 
 SRC = $(shell find ./src -name '*.cpp')
 OBJ = $(subst .cpp,.o,$(SRC))
@@ -40,4 +40,5 @@ uninstall :
 
 clean :
 	find . -type f -name '*.o' -delete
+	rm -rf img/output.png
 	rm -rf $(BIN)/*
