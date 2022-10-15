@@ -37,10 +37,38 @@ png::image<png::gray_pixel> simple_gradiant(png::image<png::rgb_pixel>& source) 
     return ret;
 }
 
-png::image<png::gray_pixel> prewitt_gradiant(png::image<png::rgb_pixel>& source){
+png::image<png::gray_pixel> rgb_to_grayscale(png::image<png::rgb_pixel>& source){
     png::image<png::gray_pixel> ret(source.get_width(), source.get_height());
+    for(int y = 0; y < source.get_height(); y++){
+        for(int x = 0; x < source.get_width(); x++){
+            png::rgb_pixel pixel = source.get_pixel(x, y);
+            unsigned char current_pixel = (pixel.red + pixel.green + pixel.blue) / 3;
+            ret.set_pixel(x, y, current_pixel);
+        }
+    }
+
+    return ret;
+}
+
+png::image<png::gray_pixel> prewitt_gradiant(png::image<png::rgb_pixel>& source){
+    png::image<png::gray_pixel> converted = rgb_to_grayscale(source);
+    return prewitt_gradiant(converted);
+}
+
+png::image<png::gray_pixel> prewitt_gradiant(png::image<png::gray_pixel>& source){
+    png::image<png::gray_pixel> ret(source.get_width(), source.get_height());
+
+    const int vertical_convolve[3][3] = {{ 1,  1,  1},
+                                         { 0,  0,  0},
+                                         {-1, -1, -1}};
+    const int horizontal_convolve[3][3] = {{1, 0, -1},
+                                           {1, 0, -1},
+                                           {1, 0, -1}};
+
     for(int y = 0; y < source.get_height(); ++y){
         for(int x = 0; x < source.get_width(); ++x){
+            //first we calculate the vertical convulution
+
 
         }
     }

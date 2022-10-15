@@ -13,6 +13,7 @@ void help(char** argv){
     std::cout << "Usage: " << argv[0] << " [processing-flags] [INPUT_FILE.png]\n";
     std::cout << "Flags:\n";
     std::cout << " -s       Simple Gradiant\n";
+    std::cout << " -g       Grayscale\n";
     std::cout << " -p       Prewitt Gradiant Smoothing\n";
     std::cout << "\nNote: only one flag can be choosen at a time. Result goes to output.png\n";
     std::cout << std::endl;
@@ -29,6 +30,8 @@ int main(int argc, char** argv){
 
     if(flag == "-s")
         result = simple_gradiant(input);
+    else if(flag == "-g")
+        result = rgb_to_grayscale(input);
     else if (flag == "-p")
         result = prewitt_gradiant(input);
     else

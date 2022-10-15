@@ -14,5 +14,7 @@
  * neighboring vertical/horizontal pixels
  */
 png::image<png::gray_pixel> simple_gradiant(png::image<png::rgb_pixel>&);
+png::image<png::gray_pixel> rgb_to_grayscale(png::image<png::rgb_pixel>&);
 png::image<png::gray_pixel> prewitt_gradiant(png::image<png::rgb_pixel>&);
+png::image<png::gray_pixel> prewitt_gradiant(png::image<png::gray_pixel>&);
 
